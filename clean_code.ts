@@ -26,11 +26,7 @@ function compareAccountNumber(a: Account, b: Account): number {
 }
 
 function sort(accounts: Account[]): Account[] {
-    var accountType: { [id: string]: Account[] } = {
-        "credit": [],
-        "debit": [],
-        "other": [],
-    };
+    var accountType: { [id: string]: Account[] } = {"credit": [], "debit": [], "other": [] };
 
     accounts.forEach(account => {
         accountType[account.getType()].push(account);
@@ -41,25 +37,24 @@ function sort(accounts: Account[]): Account[] {
         .concat(accountType["other"].sort(compareAccountNumber));
 }
 
-function randomInt(max: number = 100, min: number = 0): number {
+function randomInt(max: number = 9999, min: number = 1000): number {
     return Math.floor(Math.random() * (max - min) + min);
 }
 
 let accounts: Account[] = [
-    new Account(randomInt(), null, randomInt()),
-    new Account(randomInt(), randomInt(), randomInt()),
-    new Account(null, randomInt(), randomInt()),
-    new Account(null, null, randomInt()),
-    new Account(randomInt(), null, randomInt()),
-    new Account(randomInt(), randomInt(), randomInt()),
-    new Account(null, randomInt(), randomInt()),
-    new Account(null, null, randomInt()),
-    new Account(randomInt(), null, randomInt()),
-    new Account(randomInt(), randomInt(), randomInt()),
-    new Account(null, randomInt(), randomInt()),
-    new Account(null, null, randomInt()),
+    new Account(randomInt(), null, randomInt(99, 10)),
+    new Account(randomInt(), randomInt(), randomInt(99, 10)),
+    new Account(null, randomInt(), randomInt(99, 10)),
+    new Account(null, null, randomInt(99, 10)),
+    new Account(randomInt(), null, randomInt(99, 10)),
+    new Account(randomInt(), randomInt(), randomInt(99, 10)),
+    new Account(null, randomInt(), randomInt(99, 10)),
+    new Account(null, null, randomInt(99, 10)),
+    new Account(randomInt(), null, randomInt(99, 10)),
+    new Account(randomInt(), randomInt(), randomInt(99, 10)),
+    new Account(null, randomInt(), randomInt(99, 10)),
+    new Account(null, null, randomInt(99, 10)),
 ]
 
 accounts = sort(accounts);
-
-accounts.forEach(x => console.log(x))
+console.log(accounts)
